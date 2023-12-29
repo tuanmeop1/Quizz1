@@ -60,29 +60,31 @@ public class MainActivity3 extends AppCompatActivity {
                     intent.putExtra("mode", mode);
                     startActivity(intent);
                     finish();
-                    return;
-                }
-                radioButton = (RadioButton) radioGroup.findViewById(radioButtonID);
-                String selectedAnswer = (String) radioButton.getText();
-                radioButton.setChecked(false);
-                //Kiem tra dap an
-                if(selectedAnswer.equals(selectedQuestionList.get(index).getAnswer())) {
-                    index++;
-                    score = getScore();
-                    //Kiem tra xem het cau hoi hay chua, neu chua tiep tuc hien thi cau hoi tiep theo
-                    if(index >= selectedQuestionList.size()) {
+                }else {
+                    radioButton = (RadioButton) radioGroup.findViewById(radioButtonID);
+                    String selectedAnswer = (String) radioButton.getText();
+                    radioButton.setChecked(false);
+                    //Kiem tra dap an
+                    if(selectedAnswer.equals(selectedQuestionList.get(index).getAnswer())) {
+                        index++;
+                        score = getScore();
+                        //Kiem tra xem het cau hoi hay chua, neu chua tiep tuc hien thi cau hoi tiep theo
+                        if(index >= selectedQuestionList.size()) {
+                            intent.putExtra("score", score);
+                            intent.putExtra("topicChosen", topicChosen);
+                            intent.putExtra("mode", mode);
+                            startActivity(intent);
+                            finish();
+                        }else {
+                            setQuestion();
+                        }
+                    }else {
                         intent.putExtra("score", score);
                         intent.putExtra("topicChosen", topicChosen);
                         intent.putExtra("mode", mode);
                         startActivity(intent);
-                    }else {
-                        setQuestion();
+                        finish();
                     }
-                }else {
-                    intent.putExtra("score", score);
-                    intent.putExtra("topicChosen", topicChosen);
-                    intent.putExtra("mode", mode);
-                    startActivity(intent);
                 }
             }
         });
