@@ -19,6 +19,8 @@ public class MainActivity4 extends AppCompatActivity {
     Button finishBtn;
     Button tryAgainBtn;
     String score;
+    String topicChosen;
+    int mode;
     int totalScore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,8 @@ public class MainActivity4 extends AppCompatActivity {
         //nhan Score tu man choi
         Intent getIntent = getIntent();
         score = String.valueOf(getIntent.getIntExtra("score", 0));
+        topicChosen = getIntent.getStringExtra("topicChosen");
+        mode = getIntent.getIntExtra("mode", 0);
         Intent intent1 = new Intent(this, MainActivity.class);
         Intent intent2 = new Intent(this, MainActivity3.class);
         binding.score.setText(score);
@@ -50,6 +54,8 @@ public class MainActivity4 extends AppCompatActivity {
         binding.restartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent2.putExtra("topicChosen", topicChosen);
+                intent2.putExtra("mode", mode);
                 startActivity(intent2);
             }
         });

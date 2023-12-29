@@ -56,6 +56,8 @@ public class MainActivity3 extends AppCompatActivity {
                 //Kiem tra xem da chon dap an hay chua, neu chua thi coi nhu tra loi sai
                 if (radioButtonID == -1) {
                     intent.putExtra("score", score);
+                    intent.putExtra("topicChosen", topicChosen);
+                    intent.putExtra("mode", mode);
                     startActivity(intent);
                     finish();
                     return;
@@ -70,12 +72,16 @@ public class MainActivity3 extends AppCompatActivity {
                     //Kiem tra xem het cau hoi hay chua, neu chua tiep tuc hien thi cau hoi tiep theo
                     if(index >= selectedQuestionList.size()) {
                         intent.putExtra("score", score);
+                        intent.putExtra("topicChosen", topicChosen);
+                        intent.putExtra("mode", mode);
                         startActivity(intent);
                     }else {
                         setQuestion();
                     }
                 }else {
                     intent.putExtra("score", score);
+                    intent.putExtra("topicChosen", topicChosen);
+                    intent.putExtra("mode", mode);
                     startActivity(intent);
                 }
             }
